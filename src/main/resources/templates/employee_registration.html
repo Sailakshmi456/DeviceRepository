@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Registration</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<style>
+body {
+	margin: 0;
+	font-family: "Heebo", sans-serif;
+	padding-top: 80px;
+}
+
+.container {
+	max-width: 1406px;
+	margin: auto;
+	padding: 0 16px;
+	color: #305030;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #fff;
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+	height: 80px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+header .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
+
+header .logo {
+	display: inline-block;
+	font-size: 27px;
+}
+
+header nav {
+	display: inline-block;
+}
+
+header nav ul li {
+	display: inline-block;
+}
+
+header nav ul li a {
+	color: #3e3e3e;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 0.37px;
+	margin-right: 24px;
+	text-decoration: none;
+}
+
+header nav ul li a:hover {
+	color: rgb(8, 194, 8);
+}
+
+header nav ul li:last-of-type a {
+	margin-right: 0;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 27px;
+	color: #305030;
+}
+
+a:hover {
+	color: rgb(8, 194, 8);
+}
+
+.text-center {
+	width: 450px;
+	height: 587px;
+	background: #f0f4f7;
+	color: #728672;
+	top: 40%;
+	font-size: 16px;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 30px;
+	margin-top: 110px;
+	border-radius: 15px;
+	font-weight: bold;
+}
+
+h1 {
+	margin: 0;
+	color: white;
+	padding: 21px 0 20px;
+	text-align: center;
+	font-size: 25px;
+}
+
+.container a {
+	text-decoration: none;
+}
+
+input[type="email"] {
+	width: 390px;
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	margin-top: 7px;
+	border: none;
+	border-bottom: 1px solid #989898;
+	background-color: #f0f4f7;
+	margin-bottom: 8px;
+	height: 25px;
+	font-size: 14px;
+}
+
+input[type="number"] {
+	width: 390px;
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	margin-top: 11px;
+	border: none;
+	border-bottom: 1px solid #989898;
+	background-color: #f0f4f7;
+	margin-bottom: 8px;
+	font-size: 14px;
+}
+
+.row input[type="text"] {
+	border: none;
+	border-bottom: 1px solid #989898;
+	background: transparent;
+	outline: none;
+	height: 30px;
+	color: black;
+	font-size: 14px;
+	width: 391px;
+	margin-bottom: 8px;
+}
+
+#emp {
+	margin-left: 900px;
+	color: #3e3e3e;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 0.37px;
+	color: #3e3e3e;
+}
+
+.top {
+	background-color: #305030 !important;
+	border-color: #305030 !important;
+	height: 67px;
+	width: 450px;
+	margin-top: -31px;
+	margin-left: -30px !important;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.main {
+	height: 700px;
+}
+
+.m-3 {
+	margin-top: 20px;
+}
+
+.btn {
+	margin: 13px 124px 0px 135px;
+	height: 39px;
+	width: 100px;
+	border-radius: 10px solid #305030 !important;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff !important;
+	background-color: #305030 !important;
+	border-color: #305030 !important;
+}
+
+.btn:hover {
+	background-color: #c5d6d0 !important;
+	color: black !important;
+	border-color: #c5d6d0 !important;
+}
+
+header nav a {
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 0.37px;
+	margin-right: 24px;
+	text-decoration: none;
+}
+
+#logout {
+	border: 2px solid #989898;
+	padding: 5px;
+	border-radius: 7px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#logout:hover {
+	background: #728672 !important;
+	color: white !important;
+}
+
+#home {
+	border: 2px solid #989898;
+	padding: 5px;
+	border-radius: 7px;
+	font-weight: bold;
+	font-size: 18px;
+	margin-left: 990px;
+}
+
+#home:hover {
+	background: #728672 !important;
+	color: white !important;
+}
+
+.main {
+	height: 650px;
+	background: linear-gradient(315deg, #e58c8a 0%, #eec0c6 74%);
+}
+</style>
+</head>
+
+<header>
+	<div class="container">
+		<section class="logo">
+			<a href="deviceRepositoryHome"> <strong>Device Management</strong>
+			</a>
+		</section>
+		<nav>
+			<a href="deviceRepositoryHome" id="home"><i class="fa fa-home"></i></a>
+		</nav>
+		<nav>
+			<a href="/" id="logout">Logout</a>
+		</nav>
+	</div>
+</header>
+
+<body>
+	<div class="main">
+		<div class="text-center">
+			<div class="top">
+				<h1>Employee Registration</h1>
+			</div>
+			<form th:action="@{/employeeRegisterForm}" th:object="${employe}" method="post"
+				style="max-width: 600px; margin: 0 auto;">
+				<div class="m-3">
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">SAP Id
+							<span style="color: #ff0000">*</span>
+						</label>
+						<div class="col-8">
+							<input type="text" id="empid" name="phonenumber"
+								th:field="*{empid}" class="form-control"
+								pattern="[1-9]{1}[0-9]{7}" title="Sap Id must contains 8 digits"
+								autocomplete="off" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">First
+							Name <span style="color: #ff0000">*</span>
+						</label>
+						<div class="col-8">
+							<input type="text" id="firstName" th:field="*{firstName}"
+								class="form-control" required pattern="[a-zA-Z\s\]+"
+								title="Only alphabets are allowed" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">Last
+							Name <span style="color: #ff0000">*</span>
+						</label>
+						<div class="col-8">
+							<input type="text" id="lastName" th:field="*{lastName}"
+								class="form-control" required pattern="[a-zA-Z\s\]+"
+								title="Only alphabets are allowed" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">Designation
+							<span style="color: #ff0000">*</span>
+						</label>
+						<div class="col-8">
+							<input type="text" id="designation" th:field="*{designation}"
+								class="form-control" required pattern="[a-zA-Z\s\]+"
+								title="Only alphabets are allowed" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">Email <span
+							style="color: #ff0000">*</span></label>
+						<div class="col-8">
+							<input type="email" id="email" th:field="*{email}"
+								pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}" class="form-control"
+								autocomplete="off" title="Please enter a valid email" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">City <span
+							style="color: #ff0000">*</span></label>
+						<div class="col-8">
+							<input type="text" id="address" th:field="*{address}"
+								class="form-control" pattern="[a-zA-Z\s\]+"
+								title="Only alphabets are allowed" autocomplete="off" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">Contact
+							No <span style="color: #ff0000">*</span>
+						</label>
+						<div class="col-8">
+							<input type="text" id="phonenumber" name="phonenumber"
+								th:field="*{contactNo}" class="form-control"
+								pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+								title="phone number must contains 10 digits" autocomplete="off"
+								required>
+						</div>
+					</div>
+
+					<div>
+						<button type="submit" class="btn">Register</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="path/to/font-awesome/css/font-awesome.min.css">
+<img
+	src="https://www.softwebsolutions.com/wp-content/uploads/2018/02/Device-Management-1.jpg"
+	width="65%" height="673">
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<style>
+body {
+	margin: 0;
+	font-family: "Heebo", sans-serif;
+	padding-top: 80px;
+}
+
+.container {
+	max-width: 1395px;
+	margin: auto;
+	padding: 0 16px;
+	color: #305030;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #fff;
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+	height: 80px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+header .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
+
+header .logo {
+	display: inline-block;
+	font-size: 27px;
+}
+
+header nav {
+	display: inline-block;
+}
+
+header nav ul li {
+	display: inline-block;
+}
+
+header nav ul li a {
+	color: #3e3e3e;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 0.37px;
+	margin-right: 24px;
+	text-decoration: none;
+}
+
+header nav ul li a:hover {
+	color: rgb(8, 194, 8);
+}
+
+header nav ul li:last-of-type a {
+	margin-right: 0;
+}
+
+.search-bar {
+	align-items: center;
+	display: inline-block;
+	flex-direction: row;
+	justify-content: start;
+	padding-left: 1rem;
+	width: 100%;
+	margin: 50px 0 0 35px;
+}
+
+.search-bar input[type="search"] {
+	border: 0;
+	caret-color: #fa811b;
+	font-size: 17px;
+	padding: 14px 20px 14px 0.5rem;
+	width: 35%;
+	box-sizing: content-box;
+	margin-left: 15px;
+	border-radius: 0.25rem;
+	border: 2px solid #cfcfcf;
+}
+
+.card {
+	margin-left: 1149px;
+	margin-top: 20px;
+	border: 2px solid #cfcfcf;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+.card-body {
+	margin-left: 7px;
+}
+
+.card-img-top {
+	margin: 10px 10px 10px 20px;
+	width: 70%;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 15px;
+	color: #305030;
+}
+
+a:hover {
+	color: rgb(8, 194, 8);
+}
+
+#rep {
+	width: 25% !important;
+	height: 25% !important;
+	margin-top: 25px;
+}
+
+.reports {
+	margin-left: 1183px;
+}
+
+#employees {
+	font-size: 17px;
+	margin-left: 11px;
+}
+
+#devices {
+	font-size: 17px;
+	margin-left: 10px;
+}
+
+#logout {
+	border: 2px solid #989898;
+	padding: 5px;
+	border-radius: 7px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#logout:hover {
+	background: #728672 !important;
+	color: white !important;
+}
+</style>
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<section class="logo">
+				<strong>Device Management</strong>
+			</section>
+			<nav>
+				<a href="/" id="logout">Logout</a>
+			</nav>
+		</div>
+		<div class="main">
+			<div class="empcard">
+				<div class="card" id="employeecard" style="width: 11rem;">
+					<img class="card-img-top"
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYwLcH_WokdOD8gchr0gNu2PdbJrlbnW5Yug&usqp=CAU"
+						alt="Card image cap">
+					<div class="card-body" id="empbody">
+						<a href="employeeRegisterForm">Employee Registration</a>
+					</div>
+				</div>
+
+				<div class="devicecard">
+					<div class="card" id="devcard" style="width: 11rem;">
+						<img class="card-img-top"
+							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0kKXh8OxlFTi2E0Uh21gjGbDO0FShCf89wg&usqp=CAU"
+							alt="Card image cap">
+						<div class="card-body" id="devbody">
+							<a href="showNewDeviceForm" style="font-size: 17px">Device
+								Registration</a> <a href="deviceAllocationForm"
+								style="font-size: 17px">Device Allocation</a> <a
+								href="reallocation" style="font-size: 17px">Device
+								Reallocation</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="reportcard">
+					<div class="card" id="devcard" style="width: 11rem;">
+						<img class="card-img-top"
+							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMpJ7n5-SKdNOi0PSiqeb9Nffl5Tch4YkSIg&usqp=CAU"
+							style="width: 80%" alt="Card image cap">
+						<div class="card-body" id="devbody">
+							<a href="availableDevicesList" style="font-size: 17px"
+								id="devices">Available Devices</a><br> <a href="deviceAllocationreport"
+								style="font-size: 17px" id="devices">Allocated Devices</a> <br>
+							<a href="employeeDeviceList" style="font-size: 17px" id="employees">History Of
+								Devices</a> <br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var display = new Date();
+			document.getElementById('display_date').innerHTML = display;
+		</script>
+</body>
+</html>

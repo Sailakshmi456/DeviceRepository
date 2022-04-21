@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Device Management System</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	background-position: center;
+	font-family: sans-serif;
+}
+
+.text-center {
+	width: 450px;
+	height: 414px;
+	background: #f0f4f7;
+	color: #728672;
+	top: 34%;
+	font-size: 16px;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 30px;
+	margin-top: 110px;
+	border-radius: 15px;
+	font-weight: bold;
+}
+
+h1 {
+	margin: 0;
+	color: white;
+	padding: 21px 0 20px;
+	text-align: center;
+	font-size: 25px;
+}
+
+.btn {
+	align-content: center;
+	margin: 8px 124px 0px 135px;
+	height: 39px;
+	width: 100px;
+	border-radius: 10px solid #305030 !important;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff !important;
+	background-color: #305030 !important;
+	border-color: #305030 !important;
+}
+
+.btn:hover {
+	background-color: #c5d6d0 !important;
+	color: black !important;
+	border-color: #c5d6d0 !important;
+}
+
+header {
+	background-color: #fff;
+	height: 80px;
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+header .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.container {
+	max-width: 1406px;
+	margin: auto;
+	padding: 0 16px;
+	color: #305030 !important;
+	font-size: 27px;
+}
+
+.container a {
+	text-decoration: none;
+}
+
+input[type="email"] {
+	width: 390px;
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	margin-top: 11px;
+	border: none;
+	border-bottom: 1px solid #989898;
+	background-color: #f0f4f7;
+	margin-bottom: 8px;
+	font-size: 14px;
+}
+
+input[type="number"] {
+	width: 390px;
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	margin-top: 11px;
+	border: none;
+	border-bottom: 1px solid #989898;
+	background-color: #f0f4f7;
+	margin-bottom: 8px;
+	font-size: 14px;
+}
+
+.row input[type="text"] {
+	border: none;
+	border-bottom: 1px solid #989898;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: black;
+	font-size: 14px;
+	width: 263px;
+	margin-bottom: 8px;
+}
+
+.devid input[type="text"] {
+	margin-left: 34px;
+}
+
+.sapid input[type="text"] {
+	margin-left: 57px;
+}
+
+.empName input[type="text"] {
+	margin-left: -12px;
+}
+
+.row input[type="date"] {
+	background-color: #e9ecef;
+}
+
+#emp {
+	border: 1px solid black;
+	padding: 10px;
+	border-radius: 9px;
+	margin-left: 900px;
+	color: #3e3e3e;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 0.37px;
+	color: #3e3e3e;
+}
+
+.top {
+	background-color: #305030 !important;
+	border-color: #305030 !important;
+	height: 67px;
+	width: 450px;
+	margin-top: -31px;
+	margin-left: -30px !important;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.main {
+	height: 712px;
+}
+
+.m-3 {
+	margin-top: 20px;
+}
+
+#status {
+	width: 267px;
+	height: 36px;
+	margin-left: 63px;
+	border-bottom: 1px solid #989898;
+}
+
+#type {
+	width: 267px;
+	height: 36px;
+	margin-left: 12px;
+	border-radius: 4px;
+	border: 1px solid #989898;
+}
+
+#deviceName {
+	width: 267px;
+	height: 36px;
+	margin-left: 6px;
+	border-bottom: 1px solid #989898;
+}
+
+.deviceType {
+	width: 261px;
+	height: 36px;
+	margin-left: 19px;
+	border-radius: 4px;
+	border: 1px solid #989898;
+	background-color: #e9ecef;
+}
+
+.form-control {
+	margin-left: -8px;
+	width: 117%;
+}
+
+#logout {
+	border: 2px solid #989898;
+	padding: 5px;
+	border-radius: 7px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#logout:hover {
+	background: #728672 !important;
+	color: white !important;
+}
+
+.deviceType {
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+	font-size: 27px;
+	color: #305030;
+}
+
+a:hover {
+	color: rgb(8, 194, 8);
+}
+
+#home {
+	border: 2px solid #989898;
+	padding: 5px;
+	border-radius: 7px;
+	font-weight: bold;
+	font-size: 18px;
+	margin-left: 990px;
+}
+
+#home:hover {
+	background: #728672 !important;
+	color: white !important;
+}
+
+.main {
+	height: 721px;
+	background: linear-gradient(315deg, #e58c8a 0%, #eec0c6 74%);
+}
+</style>
+</head>
+<header>
+	<div class="container">
+		<section class="logo">
+			<a href="deviceRepositoryHome"> <strong>Device Management</strong>
+			</a>
+		</section>
+		<nav>
+			<a href="deviceRepositoryHome" id="home"><i class="fa fa-home"></i></a>
+		</nav>
+		<nav>
+			<a href="/" id="logout">Logout</a>
+		</nav>
+	</div>
+</header>
+
+<body>
+	<div class="main">
+		<div class="text-center">
+			<div class="top">
+				<h1>Device Registration</h1>
+			</div>
+			<form action="#" th:action="@{/showNewDeviceForm}"
+				th:object="${device}" method="POST">
+				<div class="m-3">
+					<div class="form-group row devid">
+						<label class="col-form-label">Device Id <span
+							style="color: #ff0000">*</span></label>
+						<div class="col-8">
+							<input type="text" th:field="*{deviceId}" class="form-control"
+								pattern="[1-9]{1}[0-9]{7}"
+								title="Device Id must contains 8 digits" autocomplete="off"
+								required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-form-label">Device Name <span
+							style="color: #ff0000">*</span>
+						</label>
+						<div class="col-8">
+							<input type="text" th:field="*{deviceName}" id="deviceName"
+								class="form-control" required pattern="[a-zA-Z\s\]+"
+								title="Only alphabets are allowed" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-form-label">Device Type <span
+							style="color: #ff0000">*</span>
+						</label>
+						<div class="col-8">
+							<select name="deviceType" class="deviceType" id="type" required>
+								<option value="Laptop">Laptop</option>
+								<option value="Mobile">Mobile</option>
+								<option value="Tablet">Tablet</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-form-label">Registered Date</label>
+						<div class="col-8">
+							<input type="datetime-local" th:field="*{dateOfRegister}"
+								placeholder="Date of issue" class="form-control"
+								autocomplete="off">
+						</div>
+					</div>
+
+					<div>
+						<button type="submit" class="btn">Register</button>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-form-label" style="visibility: hidden">Status
+						</label>
+						<div class="col-8">
+							<input type="text" id="status" name="status" value="Idle"
+								readonly hidden="true">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

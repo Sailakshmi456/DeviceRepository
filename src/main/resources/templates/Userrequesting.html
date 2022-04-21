@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Transparent Login Form HTML CSS</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script type="text/javascript">
+function sendEmail() {
+var s = document.getElementById("empid").value;
+console.log(s);
+var name = document.getElementById("firstName").value;
+console.log(name);
+var email = document.getElementById("email").value;
+console.log(email);
+var devicename = document.getElementById("deviceName").value;
+console.log(devicename);
+Email.send({
+Host: "smtp.gmail.com",
+Username: "devicerequest216@gmail.com",
+Password: "Device@request*",
+To: "itdevice1462@gmail.com",
+From: "devicerequest216@gmail.com",
+Subject: "Requesting for Device",
+Body: `
+Hii,
+The following employee has requested for device.
+Sap Id:${s}
+Employee Name:${name}
+Email:${email}
+Device name:${devicename}
+Thanks!!!!!!
+`,
+}).then(function (message) {
+alert("mail sent successfully");
+});
+}
+</script>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	background-position: center;
+	font-family: sans-serif;
+}
+
+.text-center {
+	width: 450px;
+	height: 400px;
+	background: #f0f4f7;
+	color: black;
+	top: 29%;
+	font-size: 16px;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 30px;
+	margin-top: 110px;
+	border-radius: 15px;
+}
+
+h1 {
+	margin: 0;
+	color: white;
+	padding: 21px 0 20px;
+	text-align: center;
+	font-size: 25px;
+}
+
+header {
+	background-color: #fff;
+	height: 80px;
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+header .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.container {
+	max-width: 1395px;
+	margin: auto;
+	padding: 0 16px;
+	color: #0a59b3;
+	font-size: 27px;
+}
+
+.container a {
+	text-decoration: none;
+}
+
+input[type="email"] {
+	width: 390px;
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	margin-top: 7px;
+	border: none;
+	border-bottom: 1px solid #989898;
+	background-color: #f0f4f7;
+	margin-bottom: 8px;
+	height: 25px;
+	font-size: 15px;
+}
+
+input[type="number"] {
+	width: 390px;
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	margin-top: 11px;
+	border: none;
+	border-bottom: 1px solid #989898;
+	background-color: #f0f4f7;
+	margin-bottom: 8px;
+}
+
+.row input[type="text"] {
+	border: none;
+	border-bottom: 1px solid #989898;
+	background: transparent;
+	outline: none;
+	height: 30px;
+	color: black;
+	font-size: 15px;
+	width: 391px;
+	margin-bottom: 8px;
+}
+
+#emp {
+	margin-left: 900px;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 0.37px;
+	color: #3e3e3e;
+}
+
+.top {
+	background-color: black;
+	height: 67px;
+	width: 450px;
+	margin-top: -31px;
+	margin-left: -30px !important;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.main {
+	height: 700px;
+	background: linear-gradient(to bottom right, #99ccff 0%, #cc99ff 100%);
+}
+
+.m-3 {
+	margin-top: 20px;
+}
+
+.btn {
+	margin: 13px 124px 0px 135px;
+	height: 39px;
+	width: 100px;
+	border-radius: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff !important;
+	background: black !important;
+	border: #007bff !important;
+}
+
+.btn:hover {
+	background: linear-gradient(to bottom right, #99ccff 0%, #cc99ff 100%)
+		!important;
+	color: black !important;
+}
+</style>
+</head>
+
+<body>
+	<div class="main">
+		<div class="text-center">
+			<div class="top">
+				<h1>Device Request Form</h1>
+			</div>
+			<form action="#" method="POST" onsubmit="validate()">
+				<div class="m-3">
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">SAP Id
+						</label>
+						<div class="col-8">
+							<input type="text" id="empid" name="phonenumber"
+								class="form-control" pattern="[1-9]{1}[0-9]{7}"
+								title="Sap Id must contains 8 digits" required
+								autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">First
+							Name </label>
+						<div class="col-8">
+							<input type="text" id="firstName" class="form-control" required
+								pattern="[a-z]{1,30}" title="Only alphabets are allowed"
+								autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">Email </label>
+						<div class="col-8">
+							<input type="email" id="email" class="form-control" required
+								autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col align-self-start col-form-label">Device
+							Name </label>
+						<div class="col-8">
+							<input type="text" id="deviceName" class="form-control"
+								name="employeename" required pattern="[a-z]{1,15}"
+								title="Only alphabets are allowed" autocomplete="off">
+						</div>
+					</div>
+
+					<input type="button" class="btn" value="Submit"
+						onclick="sendEmail()" />
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

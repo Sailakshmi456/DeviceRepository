@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<style>
+header {
+	background-color: #fff;
+	height: 80px;
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+header .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.container {
+	max-width: 1395px;
+	margin: auto;
+	padding: 0 16px;
+	color: #0a59b3;
+	font-size: 27px;
+}
+
+.container a {
+	text-decoration: none;
+}
+
+h4 {
+	margin-top: 80px;
+	color: #305030;
+	font-weight: bold;
+}
+
+.btn {
+	color: #305030;
+	height: 42px;
+	font-size: 17px;
+	font-weight: bold;
+	background: white;
+	border: 2px solid #989898;
+}
+
+.btn:hover {
+	background: #305030 !important;
+	color: white !important;
+}
+
+.search input[type="text"] {
+	margin-left: 134px;
+	height: 40px;
+	margin-top: 10px;
+	margin-bottom: 24px;
+}
+
+.table {
+	margin-left: 130px;
+	margin-right: 50px !important;
+	width: 80%;
+	background: white;
+}
+
+.table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #305030;
+	color: white;
+	text-align: center;
+}
+
+.table tr {
+	text-align: center;
+}
+
+.table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.table tr:hover {
+	background-color: #ddd;
+}
+
+body {
+	font-family: "Heebo", sans-serif;
+}
+
+#title {
+	border: 2px solid #989898;
+	padding: 5px;
+	border-radius: 7px;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 27px;
+	color: #305030 !important;
+}
+
+#logout {
+	border: 2px solid #989898;
+	padding: 5px;
+	border-radius: 7px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#logout:hover {
+	background: #728672 !important;
+	color: white !important;
+}
+
+#home {
+	border: 2px solid #989898;
+	padding: 5px;
+	border-radius: 7px;
+	font-weight: bold;
+	font-size: 18px;
+	margin-left: 990px;
+}
+
+#home:hover {
+	background: #728672 !important;
+	color: white !important;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+	font-weight: normal;
+	text-align: left;
+	white-space: nowrap;
+	margin-left: 133px;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+	font-weight: normal;
+	white-space: nowrap;
+	text-align: left;
+	visibility: hidden;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+	padding-top: .85em;
+	margin-left: 128px;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+	margin: 47px 0;
+	white-space: nowrap;
+	justify-content: flex-start;
+	margin-left: -523px !important;
+}
+
+a:hover {
+	color: rgb(8, 194, 8);
+}
+
+a {
+	text-decoration: none;
+	color: #305030;
+}
+
+.main {
+	height: 624px;
+	width: 100%;
+	background-image: linear-gradient(315deg, #e58c8a 0%, #eec0c6 74%);
+}
+</style>
+</head>
+<header>
+	<div class="container">
+		<section class="logo">
+			<a href="deviceRepositoryHome" class="title"> <strong>Device Management</strong>
+			</a>
+		</section>
+		<nav>
+			<a href="deviceRepositoryHome" id="home"><i class="fa fa-home"></i></a>
+		</nav>
+		<nav>
+			<a href="/" id="logout">Logout</a>
+		</nav>
+	</div>
+	</div>
+</header>
+
+<body>
+	<div class="main">
+		<div class="search mt-5">
+			<h4 align="center">Available Devices Report</h4>
+			<br>
+			<div float:right>
+				<form th:action="@{/deviceAvailableSearch}" method="get">
+					<input type="text" name="keyword" th:value="${keyword}"
+						placeholder="Search by device id or device type or status"
+						size="50" autocomplete="off">
+					<button type="submit" class="btn">Search</button>
+				</form>
+			</div>
+
+			<table class="table table-bordered table-sm mt-2" id="example">
+				<thead>
+					<tr>
+						<th>Device Id</th>
+						<th>Device Name</th>
+						<th>Device Type</th>
+						<th>Date Of Register</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="device : ${listDevices}">
+						<td th:text="${device.deviceId}"></td>
+						<td th:text="${device.deviceName}"></td>
+						<td th:text="${device.deviceType}"></td>
+						<td th:text="${device.dateOfRegister}"></td>
+						<td th:text="${device.status}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<script>
+			$(document).ready(function() {
+				$('#example').DataTable();
+			});
+		</script>
+</body>
+</html>

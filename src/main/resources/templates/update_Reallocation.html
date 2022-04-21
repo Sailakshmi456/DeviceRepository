@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Device Management System</title>
+
+
+
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+crossorigin="anonymous">
+<style>
+body {
+margin: 0;
+padding: 0;
+background-size: cover;
+background-position: center;
+font-family: sans-serif;
+}
+
+
+
+.text-center {
+width: 450px;
+height: 600px;
+background: #f0f4f7;
+color: #728672;
+top: 41%;
+font-size: 16px;
+left: 50%;
+position: absolute;
+transform: translate(-50%, -50%);
+box-sizing: border-box;
+padding: 30px;
+margin-top: 110px;
+border-radius: 15px;
+font-weight: bold;
+}
+
+
+
+a {
+text-decoration: none;
+font-size: 27px;
+color: #305030;
+}
+
+
+
+a:hover {
+color: rgb(8, 194, 8);
+}
+
+
+
+.row input[type="date"] {
+background-color: #e9ecef;
+}
+
+
+
+h1 {
+margin: 0;
+color: white;
+padding: 21px 0 20px;
+text-align: center;
+font-size: 25px;
+}
+
+
+
+.btn {
+align-content: center;
+margin: 8px 124px 0px 135px;
+height: 39px;
+width: 113px;
+border-radius: 10px solid #305030 !important;
+font-size: 18px;
+font-weight: bold;
+color: #fff !important;
+background-color: #305030 !important;
+border-color: #305030 !important;
+}
+
+
+
+.btn:hover {
+background-color: #c5d6d0 !important;
+color: black !important;
+border-color: #c5d6d0 !important;
+}
+
+
+
+header {
+background-color: #fff;
+height: 80px;
+box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 1;
+}
+
+
+
+header .container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 100%;
+}
+
+
+
+.container {
+max-width: 1406px;
+margin: auto;
+padding: 0 16px;
+color: #0a59b3;
+font-size: 27px;
+}
+
+
+
+.container a {
+text-decoration: none;
+}
+
+
+
+input[type="email"] {
+width: 390px;
+border-top: 1px solid white;
+border-left: 1px solid white;
+border-right: 1px solid white;
+margin-top: 11px;
+border: none;
+border-bottom: 1px solid #989898;
+background-color: #f0f4f7;
+margin-bottom: 8px;
+font-size: 14px;
+}
+
+
+
+input[type="number"] {
+width: 390px;
+border-top: 1px solid white;
+border-left: 1px solid white;
+border-right: 1px solid white;
+margin-top: 11px;
+border: none;
+border-bottom: 1px solid #989898;
+background-color: #f0f4f7;
+margin-bottom: 8px;
+font-size: 14px;
+}
+
+
+
+.row input[type="text"] {
+border: none;
+border-bottom: 1px solid #989898;
+background: transparent;
+outline: none;
+height: 40px;
+color: black;
+font-size: 16px;
+width: 260px;
+margin-bottom: 8px;
+font-size: 14px;
+}
+
+
+
+.top {
+background-color: #305030 !important;
+border-color: #305030 !important;
+height: 67px;
+width: 450px;
+margin-top: -31px;
+margin-left: -30px !important;
+border-radius: 10px 10px 0px 0px;
+}
+
+
+
+.main {
+height: 712px;
+}
+
+
+
+.m-3 {
+margin-top: 20px;
+}
+
+
+
+.form-control {
+margin-left: 1px;
+width: 115%;
+}
+
+
+
+#sapid {
+margin-left: 59px;
+}
+
+
+
+#device-type {
+margin-left: 15px;
+}
+
+
+
+#device-name {
+margin-left: 10px;
+}
+
+
+
+#device-id {
+margin-left: 39px;
+}
+
+
+
+.empName input[type="text"] {
+margin-left: -12px;
+font-size: 14px;
+}
+
+
+
+#emp {
+border: 2px solid #989898;
+padding: 5px;
+border-radius: 7px;
+font-weight: bold;
+font-size: 18px;
+margin-left: 900px;
+letter-spacing: 0.37px;
+color: #3e3e3e;
+}
+
+
+
+#emp:hover {
+background: #728672 !important;
+color: white !important;
+}
+
+
+
+.sapId {
+margin-left: 49px;
+border-radius: 4px;
+background-color: #e9ecef;
+border: 1px solid #989898;
+width: 261px;
+height: 36px;
+font-size: 14px;
+}
+
+
+
+#status {
+margin-left: 66px;
+border-radius: 4px;
+background-color: #e9ecef;
+border: 1px solid #989898;
+width: 262px;
+height: 36px;
+font-size: 14px;
+}
+
+
+
+.main {
+height: 721px;
+background: linear-gradient(315deg, #e58c8a 0%, #eec0c6 74%);
+}
+</style>
+</head>
+
+
+
+<header>
+<script>
+var employeeList = [];
+function onEmployeeSelected(selectedEmployee) {
+var empId = document.getElementById('emplist').selectedOptions[0].value;
+if (empId != "--None--") {
+for (var i = 0; i < employeeList.length; i++) {
+if (employeeList[i].emp_id == empId) {
+populateEmployeeData(employeeList[i]);
+break;
+}
+}
+} else {
+document.getElementById('employeeName').value = "";
+
+
+
+}
+}
+
+
+
+function populateEmployeeData(empRecord) {
+document.getElementById('employeeName').value = empRecord.emp_name;
+}
+
+
+
+function loadEmployeeDetails() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+employeeList = JSON.parse(this.responseText);
+setdata1(employeeList);
+}
+};
+xhttp.open("GET", "/emplist", true);
+xhttp.send();
+}
+
+
+
+function setdata1(empList) {
+var x = document.getElementById("emplist");
+for (var i = 0; i < empList.length; i++) {
+var option = document.createElement("option");
+option.text = empList[i].emp_id;
+x.add(option);
+}
+}
+
+
+
+function setDatatoForm() {
+loadEmployeeDetails();
+}
+
+
+
+window.onload = setDatatoForm;
+</script>
+<div class="container">
+<section class="logo">
+<a href="/home"> <strong>Device Management</strong> <a
+href="/reallocation" id="emp">Back to Device List</a>
+</a>
+</section>
+</div>
+</header>
+
+
+
+<body>
+<div class="main">
+<div class="text-center">
+<div class="top">
+<h1>Device Reallocation</h1>
+</div>
+<form action="#" th:action="@{/saveDeviceAllocation}"
+th:object="${allocation}" method="POST" onsubmit="validate()">
+<div class="m-3">
+<div class="form-group row">
+<label class="col-form-label">Device Id </label>
+<div class="col-8">
+<input type="text" th:field="*{deviceId}" class="form-control"
+id="device-id" autocomplete="off" readonly>
+</div>
+</div>
+
+
+
+<div class="form-group row">
+<label class="col-form-label">Device Name </label>
+<div class="col-8">
+<input type="text" th:field="*{deviceName}" class="form-control"
+id="device-name" autocomplete="off" readonly>
+</div>
+</div>
+
+
+
+<div class="form-group row">
+<label class="col-form-label">Device Type </label>
+<div class="col-8">
+
+
+
+<input type="text" th:field="*{deviceType}" class="form-control"
+id="device-type" autocomplete="off" readonly>
+</div>
+</div>
+
+
+
+<div class="form-group row">
+<label class="col-form-label">Sap Id <span
+style="color: #ff0000">*</span>
+</label>
+<div class="col-8">
+<select name="empId" id="emplist" class="sapId"
+onChange="onEmployeeSelected(this);">
+<option value="">
+<option value="--None--">--None--</option>
+</select>
+</div>
+</div>
+
+
+
+<div class="form-group row empName">
+<label class="col-form-label">Employee Name </label>
+<div class="col-8">
+<input type="text" id="employeeName" th:field="*{employeeName}"
+class="form-control" readonly>
+</div>
+</div>
+
+
+
+<div class="form-group row">
+<label class="col-form-label">Date of issue <span
+style="color: #ff0000">*</span>
+</label>
+<div class="col-8">
+<input type="datetime-local" th:field="*{dateOfIssue}"
+class="form-control" required>
+</div>
+</div>
+
+
+
+<div class="form-group row">
+<label class="col-form-label">Status <span
+style="color: #ff0000">*</span>
+</label> <select name="status" id="status">
+<option value="Allocated">Allocated</option>
+<option value="Idle">Idle</option>
+
+</select>
+</div>
+
+
+
+<div>
+<button type="submit" class="btn">Reallocate</button>
+</div>
+</form>
+</div>
+</div>
+<script>
+function validate() {
+alert("Reallocated Successfully");
+}
+</script>
+</body>
+</html>
